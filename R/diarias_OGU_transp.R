@@ -21,8 +21,8 @@ baixa_diarios <- function(i,mesexpand,destdados) {
 }
 
 prepara_csvs <- function(i,mesexpand,destdados) {
- # zipados <- dir(paste0(destdados,i,"/"),pattern = paste0("*.zip"),full.names = T)
-#  lapply(zipados,unzip,exdir=paste0(destdados,i),overwrite = T)
+  zipados <- dir(paste0(destdados,i,"/"),pattern = paste0("*.zip"),full.names = T)
+  lapply(zipados,unzip,exdir=paste0(destdados,i),overwrite = T)
   
   ##Caso Windows, pular linhas até OBS LEITURA CONJUNTA
   if(.Platform$OS.type == "unix") {
