@@ -20,7 +20,7 @@ baixa_diarios <- function(i,mesexpand,destdados) {
   lapply(ex_per,baixa_port)
 }
 
-prepara_csvs <- function(i,mesexpand,destdados) {
+prepara_csvs <- function(i,destdados) {
   zipados <- dir(paste0(destdados,i,"/"),pattern = paste0("*.zip"),full.names = T)
   lapply(zipados,unzip,exdir=paste0(destdados,i),overwrite = T)
   
@@ -137,10 +137,10 @@ estimativa_ass <- function(i,mesexpand, destdados) {
     )
 }
 #Rodar 1 vez completo
-meses <- expand.grid(2015:2020,1:12) %>% arrange(Var1)
+meses <- expand.grid(2014:2020,1:12) %>% arrange(Var1)
 mapply(baixa_diarios,meses[[1]],meses[[2]],destdados)
 #Rodar 1 vez completo
-mapply(prepara_csvs,meses[[1]],1,destdados)
+lapply(2014:2020,prepara_csvs,destdados = destdados)
 
 ##A verificar, arquivos com tamanho 0
 #Econtrados com o seguinte comando de shell
